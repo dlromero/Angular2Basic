@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row">
+		<div class='panel panel-primary'>
+			<div class='panel-heading'>
+				{{tittlePage}}
+			</div>
+			<div class='panel-body'>
+				<div class='row'>
+					<div class='col-md-2'>Filtrar por:</div>
+					<div class='col-md-4'>
+						<input [(ngModel)]='listFilter' type='text' />
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-6'>
+						<h3>Filtrado por: {{listFilter}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class='table-responsive'>
+				<table class='table' *ngIf='products && products.length'>
+					<thead>
+						<tr>
+							<th>
+								<button (click)='toggleImage()' class='btn btn-primary'>
+                            {{showImage?'Ocultar':'Mostrar'}} Imagen
+                        </button>
+							</th>
+							<th>Producto</th>
+							<th>Codigo</th>
+							<th>Disponibilidad</th>
+							<th>Precio</th>
+							<th>Ranking</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor='let product of products | productFilter: listFilter'>
+							<td>
+								<img *ngIf='showImage' [src]='product.imagenURL' 
+									 [title]='product.productName' 
+									 [style.width.px]='imageWidth'  
+									 [style.margin.px]='imageMargin'>
+							</td>
+							<td>{{ product.productName }}</td>
+							<td>{{ product.codigoProducto | lowercase }}</td>
+							<td>{{ product.fechaPublicacion }}</td>
+							<td>{{ product.precio | currency:'USD':true:'1.2-2'}}</td>
+							<td>
+								<wc-star [rating]='product.rating'></wc-star>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
