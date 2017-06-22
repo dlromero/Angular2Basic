@@ -46,7 +46,7 @@
 							<td>{{ product.fechaPublicacion }}</td>
 							<td>{{ product.precio | currency:'USD':true:'1.2-2'}}</td>
 							<td>
-								<wc-star [rating]='product.rating'></wc-star>
+								<wc-star [rating]='product.rating' (ratingClicked)='onRatingClicked($event)'></wc-star>
 							</td>
 						</tr>
 					</tbody>
