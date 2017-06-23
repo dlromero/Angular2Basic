@@ -9,7 +9,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 
 export class ProductService {
-    private _productUrl = "http://192.168.0.101/productos.json";
+    private _productUrl = "./assets/api/productos.json";
 
     constructor(private _http: Http) {
 
