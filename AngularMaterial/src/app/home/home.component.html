@@ -1,0 +1,8 @@
+<md-list>
+  <md-list-item *ngFor="let achievement of achievements">
+    <h3 md-line>
+      <a routerLink="/{{achievement.id}}">{{achievement.title}}</a>
+      </h3>
+    <p md-line>{{achievement.description | truncate:20}}</p>
+  </md-list-item>
+</md-list>
